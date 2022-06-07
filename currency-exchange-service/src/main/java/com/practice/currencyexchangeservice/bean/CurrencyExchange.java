@@ -1,20 +1,29 @@
 package com.practice.currencyexchangeservice.bean;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 
+@Entity
 public class CurrencyExchange {
 
+    @Id
     private long id;
+
+    @Column(name = "currency_from")
     private String from;
+
+    @Column(name = "currency_to")
     private String to;
-    private BigDecimal conversionultiple;
+    private BigDecimal conversionMultiple;
     private String environment;
 
-    public CurrencyExchange(long id, String from, String to, BigDecimal conversionultiple) {
+    public CurrencyExchange(long id, String from, String to, BigDecimal conversionMultiple) {
         this.id = id;
         this.from = from;
         this.to = to;
-        this.conversionultiple = conversionultiple;
+        this.conversionMultiple = conversionMultiple;
     }
 
     public CurrencyExchange() {
@@ -45,11 +54,11 @@ public class CurrencyExchange {
     }
 
     public BigDecimal getConversionultiple() {
-        return conversionultiple;
+        return conversionMultiple;
     }
 
-    public void setConversionultiple(BigDecimal conversionultiple) {
-        this.conversionultiple = conversionultiple;
+    public void setConversionultiple(BigDecimal conversionMultiple) {
+        this.conversionMultiple = conversionMultiple;
     }
 
     public String getEnvironment() {
