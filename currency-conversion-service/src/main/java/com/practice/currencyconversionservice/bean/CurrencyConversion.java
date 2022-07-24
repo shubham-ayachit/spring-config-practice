@@ -1,36 +1,32 @@
-package com.practice.currencyexchangeservice.bean;
+package com.practice.currencyconversionservice.bean;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.math.BigDecimal;
 
-@Entity
-public class CurrencyExchange {
+public class CurrencyConversion {
 
-    @Id
     private long id;
-
-    @Column(name = "currency_from")
     private String from;
-
-    @Column(name = "currency_to")
     private String to;
-
+    private BigDecimal quantity;
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     private BigDecimal conversionMultiple;
+    private BigDecimal calculatedAmount;
     private String environment;
 
-    public CurrencyExchange(long id, String from, String to, BigDecimal conversionMultiple) {
+    public CurrencyConversion() {
+    }
+
+    public CurrencyConversion(long id, String from, String to, BigDecimal quantity, BigDecimal conversionMultiple, BigDecimal calculatedAmount, String environment) {
+        super();
         this.id = id;
         this.from = from;
         this.to = to;
+        this.quantity = quantity;
         this.conversionMultiple = conversionMultiple;
-    }
-
-    public CurrencyExchange() {
+        this.calculatedAmount = calculatedAmount;
+        this.environment = environment;
     }
 
     public long getId() {
@@ -57,12 +53,28 @@ public class CurrencyExchange {
         this.to = to;
     }
 
-    public BigDecimal getConversionultiple() {
+    public BigDecimal getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(BigDecimal quantity) {
+        this.quantity = quantity;
+    }
+
+    public BigDecimal getConversionMultiple() {
         return conversionMultiple;
     }
 
-    public void setConversionultiple(BigDecimal conversionMultiple) {
+    public void setConversionMultiple(BigDecimal conversionMultiple) {
         this.conversionMultiple = conversionMultiple;
+    }
+
+    public BigDecimal getCalculatedAmount() {
+        return calculatedAmount;
+    }
+
+    public void setCalculatedAmount(BigDecimal calculatedAmount) {
+        this.calculatedAmount = calculatedAmount;
     }
 
     public String getEnvironment() {
@@ -72,10 +84,4 @@ public class CurrencyExchange {
     public void setEnvironment(String environment) {
         this.environment = environment;
     }
-
-    
-
-    
-
-    
 }
